@@ -17,12 +17,15 @@ class BookSeeder extends Seeder
     {
         $authors = Author::all();
 
-        for ($i = 1; $i <= 10; $i++) {
-            Book::create([
-                'title' => 'Book Title ' . $i,
-                'author_id' => $authors->random()->id, // Menghubungkan buku dengan author secara acak
-                'published_year' => rand(2000, 2023), // Tahun publikasi secara acak
-            ]);
-        }
+    $genres = ['Fiction', 'Non-Fiction', 'Mystery', 'Science Fiction', 'Fantasy', 'Biography'];
+
+    for ($i = 1; $i <= 10; $i++) {
+        Book::create([
+            'title' => 'Book Title ' . $i,
+            'author_id' => $authors->random()->id, // Menghubungkan buku dengan author secara acak
+            'published_year' => rand(2000, 2023), // Tahun publikasi secara acak
+            'genre' => $genres[array_rand($genres)], // Mengambil genre secara acak
+        ]);
+    }
     }
 }
