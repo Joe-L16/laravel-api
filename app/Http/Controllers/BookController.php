@@ -16,14 +16,14 @@ class BookController extends Controller
         return response()->json($books);
     }
 
-    public function store(Request $request)
-{
-    // Validasi input menggunakan aturan dari model
-    $validatedData = $request->validate(Book::rules());
+        public function store(Request $request)
+    {
+            // Validasi input menggunakan aturan dari model
+             $validatedData = $request->validate(Book::rules());
 
-    // Membuat buku baru jika validasi berhasil
-    $book = Book::create($validatedData);
+            // Membuat buku baru jika validasi berhasil
+            $book = Book::create($validatedData);
 
-    return response()->json($book, 201); // Mengembalikan response JSON dengan status 201
-}
+        return response()->json($book, 201); // Mengembalikan response JSON dengan status 201
+    }
 }
