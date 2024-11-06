@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\Api\AuthorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,15 @@ use App\Http\Controllers\BookController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+Route::prefix('v1')->group(function () {
+
+    Route::resource('author', AuthorController::class);
+
+    Route::get('/test', function() {
+        return view('welcome');
+    });
+});
+
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
